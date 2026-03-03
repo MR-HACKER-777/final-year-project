@@ -1,0 +1,91 @@
+{
+  "name": "Meeting",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Meeting title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Meeting description or agenda"
+    },
+    "scheduled_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Scheduled date and time"
+    },
+    "duration_minutes": {
+      "type": "number",
+      "description": "Expected duration in minutes"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "in_progress",
+        "completed",
+        "cancelled"
+      ],
+      "default": "scheduled"
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of participant emails"
+    },
+    "transcript": {
+      "type": "string",
+      "description": "Full meeting transcript"
+    },
+    "summary": {
+      "type": "string",
+      "description": "AI-generated meeting summary"
+    },
+    "action_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task": {
+            "type": "string"
+          },
+          "assignee": {
+            "type": "string"
+          },
+          "due_date": {
+            "type": "string"
+          },
+          "completed": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "key_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key discussion points"
+    },
+    "meeting_type": {
+      "type": "string",
+      "enum": [
+        "team_sync",
+        "one_on_one",
+        "client_call",
+        "workshop",
+        "presentation",
+        "other"
+      ],
+      "default": "team_sync"
+    }
+  },
+  "required": [
+    "title",
+    "scheduled_date"
+  ]
+}
